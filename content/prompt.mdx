@@ -1,0 +1,135 @@
+---
+title: Teknik Prompting dalam Large Language Models (LLM): Zero-Shot, One-Shot, Few-Shot, dan Chain-of-Thought
+description: Pelajari berbagai metode prompting untuk mengoptimalkan interaksi dengan model bahasa besar seperti ChatGPT dan GPT-4.
+date: 2025-06-04
+author: AI Research Notes
+---
+
+import { CodeBlock } from '@/components/CodeBlock'
+
+# Teknik Prompting dalam Large Language Models (LLM)
+
+Seiring berkembangnya teknologi kecerdasan buatan, terutama **Large Language Models (LLM)** seperti GPT-4, kemampuan untuk memberikan instruksi melalui *prompt* menjadi sangat penting. Artikel ini akan membahas empat teknik utama dalam dunia prompting:
+
+- Zero-shot prompting
+- One-shot prompting
+- Few-shot prompting
+- Chain-of-thought prompting
+
+---
+
+## 🔹 Zero-Shot Prompting
+
+**Zero-shot prompting** adalah teknik di mana kamu memberikan perintah ke model tanpa contoh. Teknik ini sangat berguna saat kamu ingin model langsung mengerjakan tugas berdasarkan perintah saja.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate the following sentence into Indonesian:
+"The future of AI is incredibly promising."
+</CodeBlock>
+
+> Output:
+> Masa depan AI sangat menjanjikan.
+
+### Kapan digunakan:
+- Tugas sederhana dan langsung
+- Jika kamu yakin model sudah punya pengetahuan umum tentang tugas tersebut
+
+---
+
+## 🔹 One-Shot Prompting
+
+Dalam **one-shot prompting**, kamu memberikan satu contoh kepada model sebelum memberikan tugas.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate the following sentence into Indonesian:
+"Technology is evolving rapidly." → "Teknologi berkembang dengan cepat."
+
+Now translate:
+"Artificial Intelligence will shape the world."
+</CodeBlock>
+
+> Output:
+> Kecerdasan Buatan akan membentuk dunia.
+
+### Kelebihan:
+- Memberi konteks tentang gaya atau format jawaban yang diharapkan
+
+---
+
+## 🔹 Few-Shot Prompting
+
+**Few-shot prompting** memberikan beberapa contoh (biasanya 2-5) agar model memahami pola atau format yang diinginkan.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate the following sentences into Indonesian:
+1. "Learning is a lifelong process." → "Belajar adalah proses seumur hidup."
+2. "The internet connects the world." → "Internet menghubungkan dunia."
+
+Now translate:
+3. "Data is the new oil."
+</CodeBlock>
+
+> Output:
+> Data adalah minyak baru.
+
+### Kapan digunakan:
+- Tugas kompleks atau bergaya khusus (format tabel, bahasa formal/informal, dll)
+- Saat hasil dari zero-shot tidak konsisten
+
+---
+
+## 🔹 Chain-of-Thought Prompting
+
+**Chain-of-thought prompting** adalah teknik yang menginstruksikan model untuk "berpikir langkah demi langkah" sebelum memberikan jawaban akhir.
+
+### Contoh:
+
+<CodeBlock language="text">
+Question: If there are 3 apples and you buy 2 more, how many apples do you have?
+
+Let's think step by step.
+</CodeBlock>
+
+> Output:
+> I start with 3 apples.  
+> I buy 2 more apples.  
+> 3 + 2 = 5.  
+> The answer is 5 apples.
+
+### Kelebihan:
+- Membantu model menghindari kesalahan logika atau penalaran
+- Berguna untuk soal matematika, logika, atau pemrograman
+
+---
+
+## ✨ Tips Memilih Teknik Prompting
+
+| Teknik             | Cocok untuk                          | Contoh Kasus                                 |
+|--------------------|---------------------------------------|-----------------------------------------------|
+| Zero-shot          | Instruksi sederhana                   | Terjemahan langsung, ringkasan pendek         |
+| One-shot           | Tugas dengan format unik              | Format surat, pengolahan data sederhana       |
+| Few-shot           | Tugas kompleks atau domain khusus     | Analisis teks hukum, laporan structured       |
+| Chain-of-thought   | Masalah logika atau numerik           | Soal matematika, analisa sebab-akibat         |
+
+---
+
+## 📌 Kesimpulan
+
+Memahami dan menguasai teknik-teknik prompting adalah kunci untuk memaksimalkan potensi LLM seperti GPT-4. Tidak ada satu pendekatan yang selalu benar—pilih teknik berdasarkan kompleksitas tugas dan kebutuhan pengguna.
+
+> Latihan dan eksperimen adalah jalan terbaik untuk memahami kekuatan prompting.
+
+---
+
+## 🔗 Referensi
+
+- OpenAI Cookbook: [Prompt Engineering Guide](https://platform.openai.com/docs/guides/gpt)
+- Google Research (Wei et al., 2022): *Chain of Thought Prompting Elicits Reasoning in Large Language Models*
+- Papers with Code: [Few-shot Learning](https://paperswithcode.com/task/few-shot-learning)
+
