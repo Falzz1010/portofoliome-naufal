@@ -1,0 +1,123 @@
+---
+title: "Teknik Prompting dalam Large Language Models: Zero-Shot, One-Shot, Few-Shot, dan Chain-of-Thought"
+description: "Panduan lengkap untuk memahami dan menerapkan berbagai teknik prompting dalam interaksi dengan model bahasa besar seperti GPT-4."
+date: "2025-06-04"
+author: "AI Research Notes"
+---
+
+import { CodeBlock } from '@/components/CodeBlock'
+
+# Teknik Prompting dalam Large Language Models
+
+Large Language Models (LLM) seperti GPT-4 dapat menyelesaikan berbagai jenis tugas hanya dengan instruksi berupa teks. Salah satu kunci keberhasilan menggunakan LLM adalah memahami teknik **prompting**. Dalam artikel ini, kita akan membahas:
+
+- Zero-shot prompting
+- One-shot prompting
+- Few-shot prompting
+- Chain-of-thought prompting
+
+---
+
+## 🟠 Zero-Shot Prompting
+
+**Zero-shot prompting** adalah metode di mana model langsung diberi perintah tanpa contoh sebelumnya. Cocok untuk tugas-tugas sederhana atau yang umum dipahami model.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate to Indonesian:  
+"The weather is nice today."
+</CodeBlock>
+
+**Hasil:**
+> Cuacanya bagus hari ini.
+
+### Kapan digunakan:
+- Instruksi langsung dan jelas
+- Tugas umum seperti terjemahan, ringkasan, klasifikasi dasar
+
+---
+
+## 🟡 One-Shot Prompting
+
+**One-shot prompting** memberi **satu contoh** kepada model sebelum memberikan perintah baru. Teknik ini membantu model memahami konteks atau format output yang diharapkan.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate to Indonesian:  
+"Life is short." → "Hidup itu singkat."
+
+Translate to Indonesian:  
+"Time is money."
+</CodeBlock>
+
+**Hasil:**
+> Waktu adalah uang.
+
+---
+
+## 🟢 Few-Shot Prompting
+
+**Few-shot prompting** menyajikan **beberapa contoh** (biasanya 2–5) untuk menunjukkan pola atau struktur input-output yang diharapkan. Ini efektif untuk tugas yang lebih kompleks.
+
+### Contoh:
+
+<CodeBlock language="text">
+Translate to Indonesian:  
+"Knowledge is power." → "Pengetahuan adalah kekuatan."  
+"Practice makes perfect." → "Latihan membuat sempurna."  
+"Better late than never." →
+</CodeBlock>
+
+**Hasil:**
+> Lebih baik terlambat daripada tidak sama sekali.
+
+---
+
+## 🔵 Chain-of-Thought Prompting
+
+**Chain-of-thought prompting** menginstruksikan model untuk menjelaskan **langkah demi langkah** saat menyelesaikan masalah. Teknik ini sangat berguna untuk tugas yang memerlukan penalaran.
+
+### Contoh:
+
+<CodeBlock language="text">
+Q: If a train has 5 cars and each car can carry 80 people, how many people can the train carry in total?  
+Let's think step by step.
+</CodeBlock>
+
+**Hasil:**
+> The train has 5 cars.  
+> Each car can carry 80 people.  
+> 5 × 80 = 400.  
+> The train can carry 400 people in total.
+
+---
+
+## 📊 Perbandingan Teknik Prompting
+
+| Teknik             | Jumlah Contoh | Kelebihan                       | Cocok Untuk Tugas                    |
+|--------------------|---------------|----------------------------------|--------------------------------------|
+| Zero-shot          | 0             | Cepat dan langsung               | Terjemahan, klasifikasi umum         |
+| One-shot           | 1             | Memberi format awal              | Output berformat khusus              |
+| Few-shot           | 2–5           | Lebih kontekstual                | Ringkasan, konversi gaya/bahasa      |
+| Chain-of-thought   | 0+ (instruksi) | Penalaran dan logika lebih baik  | Matematika, pemrograman, logika      |
+
+---
+
+## 🎯 Kesimpulan
+
+Memilih metode prompting yang tepat tergantung pada:
+- Kompleksitas tugas
+- Kebutuhan format output
+- Kebutuhan penalaran model
+
+Latihan dan eksperimen adalah kunci untuk menguasai prompting secara efektif.
+
+---
+
+## 📚 Referensi
+
+- [OpenAI Prompting Guide](https://platform.openai.com/docs/guides/gpt-best-practices)
+- [Chain-of-Thought Paper by Google Research](https://arxiv.org/abs/2201.11903)
+- [Few-Shot Learning Papers](https://paperswithcode.com/task/few-shot-learning)
