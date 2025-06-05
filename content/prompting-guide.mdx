@@ -1,0 +1,139 @@
+---
+title: "Panduan Lengkap Teknik Prompting pada LLM: Zero-Shot, One-Shot, Few-Shot, dan Chain-of-Thought"
+description: "Pelajari dan pahami berbagai pendekatan prompting untuk memaksimalkan hasil dari model bahasa besar seperti GPT-4."
+date: "2025-06-04"
+author: "AI Research Notes"
+---
+
+import { CodeBlock } from '@/components/CodeBlock'
+
+# Panduan Lengkap Teknik Prompting pada LLM
+
+Model bahasa besar (LLM) seperti GPT-4 memiliki kemampuan luar biasa dalam memahami bahasa manusia. Salah satu faktor kunci untuk mengoptimalkan performa model ini adalah **teknik prompting** — cara kita memberi instruksi ke model.
+
+Empat pendekatan utama yang akan kita bahas adalah:
+
+- Zero-shot prompting
+- One-shot prompting
+- Few-shot prompting
+- Chain-of-thought prompting
+
+---
+
+## 🟧 Zero-Shot Prompting
+
+Zero-shot prompting adalah metode paling sederhana. Kamu cukup memberikan instruksi langsung ke model **tanpa contoh sama sekali**.
+
+### Kelebihan:
+- Cepat dan ringkas
+- Cocok untuk tugas-tugas umum dan langsung
+
+### Contoh Prompt:
+
+<CodeBlock language="text">
+Translate this sentence to Indonesian:  
+"The future of robotics is exciting."
+</CodeBlock>
+
+**Output:**
+> Masa depan robotika sangat menarik.
+
+---
+
+## 🟨 One-Shot Prompting
+
+Pada one-shot prompting, kamu memberikan **satu contoh input dan output**. Ini membantu model memahami format atau gaya output yang diinginkan.
+
+### Kelebihan:
+- Memberikan konteks format output
+- Cocok untuk output yang tidak standar
+
+### Contoh Prompt:
+
+<CodeBlock language="text">
+Translate the sentence to Indonesian:  
+"Success is not final." → "Kesuksesan bukanlah akhir."
+
+Translate the sentence to Indonesian:  
+"Failure is not fatal."
+</CodeBlock>
+
+**Output:**
+> Kegagalan bukanlah hal yang mematikan.
+
+---
+
+## 🟩 Few-Shot Prompting
+
+Few-shot prompting menyajikan **beberapa contoh (biasanya 2–5)** agar model bisa meniru pola dari input-output tersebut.
+
+### Kelebihan:
+- Meningkatkan konsistensi
+- Cocok untuk tugas kompleks atau domain khusus
+
+### Contoh Prompt:
+
+<CodeBlock language="text">
+Translate the following:  
+"Time is precious." → "Waktu itu berharga."  
+"Knowledge is power." → "Pengetahuan adalah kekuatan."  
+"Consistency builds trust." →
+</CodeBlock>
+
+**Output:**
+> Konsistensi membangun kepercayaan.
+
+---
+
+## 🟦 Chain-of-Thought Prompting
+
+Chain-of-thought (CoT) prompting mendorong model untuk **berpikir secara bertahap** sebelum memberikan jawaban akhir.
+
+### Kelebihan:
+- Meningkatkan kemampuan penalaran
+- Cocok untuk soal logika, matematika, dan pemrograman
+
+### Contoh Prompt:
+
+<CodeBlock language="text">
+Q: If you have 6 apples and give away 2, how many apples are left?  
+Let's think step by step.
+</CodeBlock>
+
+**Output:**
+> I have 6 apples. I give away 2 apples.  
+> 6 - 2 = 4.  
+> The answer is 4 apples.
+
+---
+
+## 📊 Perbandingan Teknik Prompting
+
+| Teknik             | Jumlah Contoh | Cocok untuk                     | Kelebihan                           |
+|--------------------|---------------|----------------------------------|--------------------------------------|
+| Zero-shot          | 0             | Tugas langsung dan sederhana     | Cepat, tanpa format khusus           |
+| One-shot           | 1             | Tugas dengan format spesifik     | Bantu model pahami pola              |
+| Few-shot           | 2–5           | Output kompleks atau bergaya     | Output lebih konsisten               |
+| Chain-of-thought   | 0+ (dengan instruksi) | Tugas logika dan reasoning | Tingkatkan kemampuan penalaran       |
+
+---
+
+## 🧠 Tips Memilih Teknik Prompting
+
+- Gunakan **zero-shot** untuk tugas-tugas sederhana.
+- Pakai **one-shot atau few-shot** jika model menghasilkan output tidak konsisten.
+- Gunakan **chain-of-thought** jika model sering salah dalam perhitungan/logika.
+
+---
+
+## 📌 Kesimpulan
+
+Memahami dan menerapkan teknik prompting secara tepat akan sangat memengaruhi kualitas output dari LLM. Tidak semua tugas cocok dengan satu metode—eksperimen adalah bagian penting dari proses.
+
+---
+
+## 🔗 Referensi
+
+- [OpenAI - Prompt Engineering Guide](https://platform.openai.com/docs/guides/gpt-best-practices)
+- [Chain-of-Thought Paper](https://arxiv.org/abs/2201.11903)
+- [Papers with Code - Few-Shot Learning](https://paperswithcode.com/task/few-shot-learning)
