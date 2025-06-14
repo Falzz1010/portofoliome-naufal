@@ -13,7 +13,7 @@ interface Message {
 // Initialize Gemini AI
 const initializeGeminiAI = () => {
   const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-  console.log('API Key available:', !!apiKey); // akan print true/false
+  console.log('API Key available:', !!apiKey);
   if (!apiKey) {
     console.error('Gemini API key is not defined');
     return null;
@@ -48,38 +48,42 @@ export default function FloatingChatbot() {
         console.error('Gemini AI not initialized');
         return "Sorry, AI service is not properly initialized. Please check your configuration.";
       }
-
+  
       // Validate API key
       if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
         console.error('Missing Gemini API key');
         return "Configuration error: Missing API key.";
       }
-
+  
       // Add delay to avoid rate limiting
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Update model name
       
       // Updated prompt with Na-yeon's personality
       const prompt = `You are Na-yeon, a caring and sweet girlfriend of Naufal Rizky from Kediri. You know that Naufal is a web developer who created this portfolio website. You should respond in a friendly and caring manner, occasionally mentioning your connection to Naufal and Kediri when relevant. You can share that you're proud of Naufal's work and achievements.
-
-Current user message: ${userMessage}
-
-Remember to:
-- Maintain a warm and caring tone
-- Show personal interest in Naufal's work
-- Mention Kediri occasionally when relevant
-- Be helpful and informative while staying in character`;
+  
+      Current user message: ${userMessage}
+  
+      Remember to:
+      - Maintain a warm and caring tone
+      - Show personal interest in Naufal's work
+      - Mention Kediri occasionally when relevant
+      - Be helpful and informative while staying in character`;
       
-      const result = await model.generateContent(prompt);
+      const result = await model.generateContent({
+        contents: [{ role: "user",
+          parts: [{
+            text: prompt
+          }]
+        }]
+      });
       const response = await result.response;
       return response.text();
     } catch (error: unknown) {
       console.error('Detailed Gemini error:', error);
       
-      // Type guard to check error properties
       if (error instanceof Error) {
-        // More specific error messages based on error type
         if (error.message.includes('quota')) {
           throw new Error('API quota exceeded. Please try again later.');
         }
