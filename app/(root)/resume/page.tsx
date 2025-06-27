@@ -2,6 +2,8 @@ import Title from "@/components/Layout/Title";
 import Link from "next/link";
 import { Download } from "react-feather";
 import React from "react";
+import Image from "next/image";
+import { Linkedin, GitHub, Mail } from "react-feather";
 
 export default function ResumePage() {
   const skills = {
@@ -21,20 +23,28 @@ export default function ResumePage() {
       company: "Freelance",
       period: "2023 - Present",
       description: "Building responsive and user-friendly web applications using modern technologies.",
+      badge: "Remote"
     },
-    {
-      role: "Frontend Developer",
-      company: "Freelance",
-      period: "2023 - Present",
-      description: "Building responsive and user-friendly web applications using modern technologies.",
-    },
-    // Add more experiences as needed
+    // Tambahkan pengalaman lain di sini jika perlu
   ];
 
   const programmingIcons = ['⚛️', '{}', '()', '&&', '=>', '||', '<>', '*/'];
 
   // Reduce the number of floating icons for mobile
   const iconCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 8 : 20;
+
+  const skillIcons: Record<string, string> = {
+    "React.js": "⚛️",
+    "Next.js": "⏭️",
+    "TypeScript": "🟦",
+    "Tailwind CSS": "🌬️",
+    "Node.js": "🟩",
+    "Express": "🚂",
+    "MongoDB": "🍃",
+    "Git": "🔧",
+    "VS Code": "📝",
+    "Figma": "🎨",
+  };
 
   return (
     <div className="space-y-16 animate-fadeIn">
@@ -62,16 +72,22 @@ export default function ResumePage() {
 
       {/* Header Section */}
       <section className="md:animate-slideUp">
-        <Title className="group">
+        <Title className="group flex items-center gap-4">
+          <Image
+            src="/assets/profil.jpg"
+            alt="Profile Picture"
+            width={48}
+            height={48}
+            className="rounded-full border border-emerald-500 shadow-md"
+          />
           <span className="inline-block group-hover:animate-rotateIn">Resume</span>
         </Title>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mt-2">
           <p className="text-zinc-400 max-w-xl leading-relaxed hover:animate-tiltBounce">
-            Frontend developer specializing in building exceptional digital experiences.
-            Currently focused on building responsive web applications.
+            Frontend developer passionate about crafting delightful digital experiences. Focused on responsive, accessible, and high-performance web applications.
           </p>
           <Link
-            href="/path-to-your-resume.pdf"
+            href="/assets/resume.pdf"
             className="flex items-center gap-2 px-4 py-2 bg-[#18181b]/50 backdrop-blur-sm border border-[#252529] rounded-lg hover:bg-[#202024] transition-all duration-300 hover:scale-105 group hover:shadow-lg hover:shadow-emerald-500/10 hover:border-emerald-500/20 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent group-hover:animate-shimmer bg-[length:200%_100%]" />
@@ -97,13 +113,14 @@ export default function ResumePage() {
               {/* Simplified gradient effects for mobile */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent hidden md:group-hover:animate-shimmer md:block bg-[length:200%_100%]" />
               <div className="relative flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-                <div className="group-hover:animate-scaleIn">
+                <div className="group-hover:animate-scaleIn flex items-center gap-2">
+                  <span className="px-2 py-0.5 text-xs bg-emerald-600/20 text-emerald-400 rounded-full font-semibold">{exp.badge}</span>
                   <h3 className="font-bold text-white/90">{exp.role}</h3>
-                  <p className="text-zinc-400">{exp.company}</p>
                 </div>
                 <span className="text-sm text-zinc-500 group-hover:animate-glow">{exp.period}</span>
               </div>
-              <p className="mt-4 text-zinc-300 text-sm leading-relaxed group-hover:text-zinc-200 transition-colors relative">{exp.description}</p>
+              <p className="text-zinc-400 text-sm font-medium mt-1">{exp.company}</p>
+              <p className="mt-2 text-zinc-300 text-sm leading-relaxed group-hover:text-zinc-200 transition-colors relative">{exp.description}</p>
             </div>
           ))}
         </div>
@@ -122,10 +139,10 @@ export default function ResumePage() {
                 {items.map((skill) => (
                   <div
                     key={skill}
-                    className="group relative px-3 py-1.5 bg-[#18181b]/50 backdrop-blur-sm border border-[#252529] rounded-lg text-sm text-zinc-300 hover:border-emerald-500/20 transition-colors duration-300 md:hover:-translate-y-0.5 md:hover:shadow-lg md:hover:shadow-emerald-500/10 overflow-hidden"
+                    className="group relative px-3 py-1.5 bg-[#18181b]/50 backdrop-blur-sm border border-[#252529] rounded-lg text-sm text-zinc-300 hover:border-emerald-500/20 transition-colors duration-300 md:hover:-translate-y-0.5 md:hover:shadow-lg md:hover:shadow-emerald-500/10 overflow-hidden flex items-center gap-2"
                   >
-                    {/* Simplified gradient effects for mobile */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent hidden md:group-hover:animate-shimmer md:block bg-[length:200%_100%]" />
+                    {/* Icon skill */}
+                    <span className="text-lg">{skillIcons[skill] || "💻"}</span>
                     <span className="relative">{skill}</span>
                   </div>
                 ))}
@@ -138,17 +155,20 @@ export default function ResumePage() {
       {/* Contact Section */}
       <section className="md:animate-slideUp [animation-delay:600ms]">
         <h2 className="text-xl font-bold mb-6 text-white/90">Get In Touch</h2>
-        <p className="text-zinc-400 leading-relaxed">
-          I&apos;m currently looking for new opportunities. Whether you have a question or
-          just want to say hi, feel free to{" "}
-          <Link
-            href="mailto:your.email@example.com"
-            className="text-white/90 hover:text-white transition-colors hover:underline underline-offset-4 hover:animate-pulse"
-          >
-            reach out
-          </Link>
-          .
+        <p className="text-zinc-400 leading-relaxed mb-4">
+          I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, feel free to reach out!
         </p>
+        <div className="flex gap-4 items-center">
+          <Link href="mailto:your.email@example.com" className="hover:text-emerald-400 transition-colors" aria-label="Email">
+            <Mail size={24} />
+          </Link>
+          <Link href="https://github.com/yourusername" target="_blank" className="hover:text-emerald-400 transition-colors" aria-label="GitHub">
+            <GitHub size={24} />
+          </Link>
+          <Link href="https://linkedin.com/in/yourusername" target="_blank" className="hover:text-emerald-400 transition-colors" aria-label="LinkedIn">
+            <Linkedin size={24} />
+          </Link>
+        </div>
       </section>
     </div>
   );
