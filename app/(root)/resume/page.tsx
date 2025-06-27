@@ -18,11 +18,40 @@ export default function ResumePage() {
   };
 
   const experiences = [
-    {
+     {
       role: "Frontend Developer",
-      company: "Freelance",
-      period: "2023 - Present",
+      company: "Furniture UMKM",
+      period: "Oct 2024 - Nov 2024",
       description: "Building responsive and user-friendly web applications using modern technologies.",
+      badge: "Remote"
+    },
+     {
+      role: "Supplier,Laveransir & Contractor",
+      company: "Dinas Pekerjaan Umum dan Penataan Ruang (PUPR), Kota Kediri",
+      period: "April 2018 - Des 2018",
+      description: " Drafted intricate designs for custom architectural elements, including door and window frames, staircases, ceilings, and bathrooms, reducing design revisions by 20%.
+",
+      badge: "Onsite"
+    },
+      {
+      role: "Frontend Developer",
+      company: "SMK Islam Miftahul Ulum",
+      period: "Feb 2024 - May 2024",
+      description: "Led the development of the school's website, ensuring mobile responsiveness and accessibility.",
+      badge: "Onsite"
+    },
+         {
+      role: "IT Support",
+      company: "Universitas Kahuripan Kediri",
+      period: "Sept 2024 - Oct 2024",
+      description: "Provided technical assistance and troubleshooting for students and faculty.",
+      badge: "Onsite"
+    },
+     {
+      role: "Frontend Developer",
+      company: "PT. Linuxhackingid Cyber Security",
+      period: "April 2024 - Present",
+      description: "Ensuring code quality and performance optimization for seamless application functionality.",
       badge: "Remote"
     },
     // Tambahkan pengalaman lain di sini jika perlu
