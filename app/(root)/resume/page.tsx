@@ -29,8 +29,12 @@ export default function ResumePage() {
       role: "Supplier,Laveransir & Contractor",
       company: "Dinas Pekerjaan Umum dan Penataan Ruang (PUPR), Kota Kediri",
       period: "April 2018 - Des 2018",
+<<<<<<< HEAD
       description: " Drafted intricate designs for custom architectural elements, including door and window frames, staircases, ceilings, and bathrooms, reducing design revisions by 20%.
 ",
+=======
+      description: " Drafted intricate designs for custom architectural elements, including door and window frames, staircases, ceilings, and bathrooms, reducing design revisions by 20%.",
+>>>>>>> 1108b60 (Initial commit or update)
       badge: "Onsite"
     },
       {
