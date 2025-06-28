@@ -14,16 +14,24 @@ export default function GithubRepositories({ username, repoCount = 4 }: { userna
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=${repoCount}`)
+    const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=${repoCount}`, {
+      headers: token ? { Authorization: `token ${token}` } : {},
+    })
       .then((res) => res.json())
       .then((data) => {
-        setRepos(data);
+        if (Array.isArray(data)) {
+          setRepos(data);
+        } else {
+          setRepos([]);
+          console.error("GitHub API error:", data);
+        }
         setLoading(false);
       });
   }, [username, repoCount]);
 
   if (loading) return <div className="text-zinc-400">Loading repositories...</div>;
-  if (!repos || repos.length === 0) return <div className="text-zinc-400">No repositories found.</div>;
+  if (!repos || repos.length === 0) return <div className="text-zinc-400">No repositories found or API error. Please try again later.</div>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

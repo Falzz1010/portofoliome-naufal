@@ -1,7 +1,6 @@
 import Divider from "@/components/Layout/Divider";
 import Image from "next/image";
 import React from "react";
-import GitHubCalendar from "react-github-calendar";
 import Blog from "./content/Blog";
 import About from "./content/About";
 import Projects from "./content/Projects";
